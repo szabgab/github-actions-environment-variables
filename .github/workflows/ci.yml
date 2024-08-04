@@ -1,6 +1,7 @@
-iame: Environment Variables
+name: Environment Variables
 
-on: push
+on:
+  push:
 
 env:
   DEMO: Foo
