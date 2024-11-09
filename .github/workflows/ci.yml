@@ -2,6 +2,7 @@ name: Environment Variables
 
 on:
   push:
+  workflow_dispatch:
 
 env:
   DEMO: Foo
