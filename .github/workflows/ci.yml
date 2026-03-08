@@ -4,12 +4,15 @@ on:
   push:
   workflow_dispatch:
 
-# We can set an environment variable for the whole file (all the jobs)
+# We can set an environment variable for
+#   - the whole file (all the jobs)
+#   - for a job
+#   - for a single step
 env:
   DEMO: "File level"
 
 jobs:
-  build:
+  global:
     runs-on: ubuntu-latest
     steps:
     - name: Show the environment variable we set for the file
@@ -17,9 +20,8 @@ jobs:
         echo $DEMO
 
     - name: Show the environment variable we set inside this step
-      # We can set an environment variable for a single step
       env:
-         DEMO: Bar
+         DEMO: "Step level"
       run: |
         echo $DEMO
 
@@ -39,7 +41,7 @@ jobs:
       run: |
         echo $DEMO
 
-  show:
+  all:
     runs-on: ubuntu-latest
     steps:
     - name: Show all the environment variables set by GitHub Actions
